@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .fullwidth {
+                width: 100%;
+            }
+
+            @media all and (orientation:portrait) {
+                .fullwidth-landscape { display:none; }
+                .fullwidth-portrait { display:inline-block; }
+            }
+
+            @media all and (orientation:landscape) {
+                .fullwidth-landscape { display:inline-block; }
+                .fullwidth-portrait { display:none; }
+            }
+        </style>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    </head>
+    <body style="margin: 0px">
+        <div>
+            <img class="fullwidth fullwidth-landscape" src="CCAPTPoster.png">
+            <img class="fullwidth fullwidth-portrait" src="CCAPTPosterMobile.png">
+        </div>
+    </body>
+</html>
