@@ -2,52 +2,114 @@
 <html>
     <head>
         <style>
-            .image {
-                background-repeat: no-repeat;
-                background-size: 100% auto;
-                background-position: center top;
-                background-attachment: fixed;
+            html, body {
+                margin: 0px;
+            }
+
+            .fullwidth {
+                width: 100%;
             }
 
             @media all and (orientation: portrait) and (max-width: 640px) {
-                .image { 
-                    background-image: url(images/portrait/640.png); 
+                html {
+                  font-family: 'portrait-small';
                 }
             }
 
             @media all and (orientation: portrait) and (max-width: 960px) {
-                .image { 
-                    background-image: url(images/portrait/960.png); 
+                html {
+                  font-family: 'portrait-medium';
                 }
             }
 
             @media all and (orientation: portrait) {
-                .image { 
-                    background-image: url(images/portrait/full.png); 
+                html {
+                  font-family: 'portrait-full';
                 }
             }
 
             @media all and (orientation: landscape) and (max-width: 960px) {
-                .image { 
-                    background-image: url(images/landscape/960.png); 
+                html {
+                  font-family: 'landscape-small';
                 }
             }
 
             @media all and (orientation: landscape) and (min-width: 1280px) {
-                .image { 
-                    background-image: url(images/landscape/1280.png); 
+                html {
+                  font-family: 'landscape-medium';
                 }
             }
 
             @media all and (orientation: landscape) {
-                .image { 
-                    background-image: url(images/landscape/full.png); 
+                html {
+                  font-family: 'landscape-full';
                 }
             }
         </style>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="js/onmediaquery.js"></script>
     </head>
     <body>
-        <div class="image"></div>
+        <img class="fullwidth" landscape-small="images/landscape/960.png" landscape-medium="images/landscape/1280.png" landscape-full="images/landscape/full.png" portrait-small="images/portrait/640.png" portrait-medium="images/portrait/960.png" portrait-full="images/portrait/full.png">
+
+        <script type="text/javascript">
+            var queries = [
+                {
+                    context: 'landscape-small',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('landscape-small');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'landscape-medium',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('landscape-medium');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'landscape-full',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('landscape-full');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'portrait-small',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('portrait-small');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'portrait-medium',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('portrait-medium');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'portrait-full',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('portrait-full');
+                            $(this).attr('src', image);
+                        });
+                    }
+                }
+            ];
+            MQ.init(queries);
+        </script>
     </body>
 </html>
