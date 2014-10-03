@@ -10,21 +10,15 @@
                 width: 100%;
             }
 
-            @media all and (orientation: portrait) and (max-width: 640px) {
+            @media all and (orientation: landscape) {
                 html {
-                  font-family: 'portrait-small';
+                  font-family: 'landscape-full';
                 }
             }
 
-            @media all and (orientation: portrait) and (max-width: 960px) {
+            @media all and (orientation: landscape) and (max-width: 1280px) {
                 html {
-                  font-family: 'portrait-medium';
-                }
-            }
-
-            @media all and (orientation: portrait) {
-                html {
-                  font-family: 'portrait-full';
+                  font-family: 'landscape-medium';
                 }
             }
 
@@ -34,15 +28,21 @@
                 }
             }
 
-            @media all and (orientation: landscape) and (min-width: 1280px) {
+            @media all and (orientation: portrait) {
                 html {
-                  font-family: 'landscape-medium';
+                  font-family: 'portrait-full';
                 }
             }
 
-            @media all and (orientation: landscape) {
+            @media all and (orientation: portrait) and (max-width: 960px) {
                 html {
-                  font-family: 'landscape-full';
+                  font-family: 'portrait-medium';
+                }
+            }
+
+            @media all and (orientation: portrait) and (max-width: 640px) {
+                html {
+                  font-family: 'portrait-small';
                 }
             }
         </style>
