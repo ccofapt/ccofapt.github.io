@@ -28,6 +28,12 @@
                 }
             }
 
+            @media all and (orientation: landscape) and (min-device-width : 320px) and (max-device-width : 568px)  {
+                html {
+                  font-family: 'landscape-small';
+                }
+            }
+
             @media all and (orientation: portrait) {
                 html {
                   font-family: 'portrait-full';
@@ -48,6 +54,7 @@
         </style>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script src="js/onmediaquery.js"></script>
+        <meta name="viewport" content="width=device-width">
     </head>
     <body>
         <img class="fullwidth" landscape-small="images/landscape/960.png" landscape-medium="images/landscape/1280.png" landscape-full="images/landscape/full.png" portrait-small="images/portrait/640.png" portrait-medium="images/portrait/960.png" portrait-full="images/portrait/full.png">
