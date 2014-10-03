@@ -2,26 +2,121 @@
 <html>
     <head>
         <style>
+            html, body {
+                margin: 0px;
+            }
+
             .fullwidth {
                 width: 100%;
             }
 
-            @media all and (orientation:portrait) {
-                .fullwidth-landscape { display:none; }
-                .fullwidth-portrait { display:block; }
+            @media all and (orientation: landscape) {
+                html {
+                  font-family: 'landscape-full';
+                }
             }
 
-            @media all and (orientation:landscape) {
-                .fullwidth-landscape { display:block; }
-                .fullwidth-portrait { display:none; }
+            @media all and (orientation: landscape) and (max-width: 1280px) {
+                html {
+                  font-family: 'landscape-medium';
+                }
+            }
+
+            @media all and (orientation: landscape) and (max-width: 960px) {
+                html {
+                  font-family: 'landscape-small';
+                }
+            }
+
+            @media all and (orientation: landscape) and (min-device-width : 320px) and (max-device-width : 568px)  {
+                html {
+                  font-family: 'landscape-small';
+                }
+            }
+
+            @media all and (orientation: portrait) {
+                html {
+                  font-family: 'portrait-full';
+                }
+            }
+
+            @media all and (orientation: portrait) and (max-width: 960px) {
+                html {
+                  font-family: 'portrait-medium';
+                }
+            }
+
+            @media all and (orientation: portrait) and (max-width: 640px) {
+                html {
+                  font-family: 'portrait-small';
+                }
             }
         </style>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="js/onmediaquery.js"></script>
+        <meta name="viewport" content="width=device-width">
     </head>
-    <body style="margin: 0px">
-        <div>
-            <img class="fullwidth fullwidth-landscape" src="CCAPTPoster.png">
-            <img class="fullwidth fullwidth-portrait" src="CCAPTPosterMobile.png">
-        </div>
+    <body>
+        <img class="fullwidth" landscape-small="images/landscape/960.png" landscape-medium="images/landscape/1280.png" landscape-full="images/landscape/full.png" portrait-small="images/portrait/640.png" portrait-medium="images/portrait/960.png" portrait-full="images/portrait/full.png">
+
+        <script type="text/javascript">
+            var queries = [
+                {
+                    context: 'landscape-small',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('landscape-small');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'landscape-medium',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('landscape-medium');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'landscape-full',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('landscape-full');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'portrait-small',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('portrait-small');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'portrait-medium',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('portrait-medium');
+                            $(this).attr('src', image);
+                        });
+                    }
+                },
+                {
+                    context: 'portrait-full',
+                    match: function() {
+                        $('img').each(function(index) {
+                            var image = $(this).attr('portrait-full');
+                            $(this).attr('src', image);
+                        });
+                    }
+                }
+            ];
+            MQ.init(queries);
+        </script>
     </body>
 </html>
